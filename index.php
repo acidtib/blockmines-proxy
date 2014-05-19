@@ -1,3 +1,5 @@
-<?hh
+<?php
+  require 'vendor/autoload.php';
 
-echo "Hello from HHVM ".HHVM_VERSION;
+  $app->setName('blockmines-proxy');
+?>
