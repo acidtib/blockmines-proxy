@@ -24,6 +24,10 @@ $app->group('/api', function () use ($app) {
 
     });
 
+    $app->group('/btc', function () use ($app) {
+    	$app->get('/price/:amount', 'btc:price');
+    });
+
   });
 
 });
@@ -64,7 +68,7 @@ class ppc {
 
 		header('Access-Control-Allow-Origin: *');
 		header('Content-type: application/json;');
-		
+
 		$url = "https://btc-e.com/api/3/ticker/ppc_btc";
 		$json = file_get_contents($url);
 		$data = json_decode($json, TRUE);
@@ -78,6 +82,27 @@ class ppc {
 		echo json_encode($response);
 	}
 
+}
+
+/**
+* BTC
+*/
+class btc {
+	
+	function price($amount) {
+		header('Access-Control-Allow-Origin: *');
+		header('Content-type: application/json;');
+
+		$url = "https://coinbase.com/api/v1/prices/buy?qty=".$amount;
+		$json = file_get_contents($url);
+		$data = json_decode($json, TRUE);
+
+		$response[] = array(
+			'price' => $data['subtotal']['amount']
+		);
+
+		echo json_encode($response);
+	}
 }
 
 ?>
