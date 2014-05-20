@@ -43,6 +43,10 @@ function home() {
 class ppc {
 	
 	function usd() {
+
+		header('Access-Control-Allow-Origin: *');
+		header('Content-type: application/json;');
+
 		$url = "https://btc-e.com/api/3/ticker/ppc_usd";
 		$json = file_get_contents($url);
 		$data = json_decode($json, TRUE);
@@ -57,6 +61,10 @@ class ppc {
 	}
 
 	function btc() {
+
+		header('Access-Control-Allow-Origin: *');
+		header('Content-type: application/json;');
+		
 		$url = "https://btc-e.com/api/3/ticker/ppc_btc";
 		$json = file_get_contents($url);
 		$data = json_decode($json, TRUE);
