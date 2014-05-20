@@ -43,11 +43,31 @@ function home() {
 class ppc {
 	
 	function usd() {
-		echo "im usd";
+		$url = "https://btc-e.com/api/3/ticker/ppc_usd";
+		$json = file_get_contents($url);
+		$data = json_decode($json, TRUE);
+
+		$response[] = array(
+			'high' => $data['ppc_usd']['high'], 
+			'low' => $data['ppc_usd']['low'],
+			'avg' => $data['ppc_usd']['avg']
+		);
+
+		echo json_encode($response);
 	}
 
 	function btc() {
-		echo "im btc";
+		$url = "https://btc-e.com/api/3/ticker/ppc_btc";
+		$json = file_get_contents($url);
+		$data = json_decode($json, TRUE);
+
+		$response[] = array(
+			'high' => $data['ppc_btc']['high'], 
+			'low' => $data['ppc_btc']['low'],
+			'avg' => $data['ppc_btc']['avg']
+		);
+
+		echo json_encode($response);
 	}
 
 }
